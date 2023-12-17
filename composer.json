@@ -1,0 +1,88 @@
+{
+    "name": "pantagruel74/multicurtest-final-scenario",
+    "description": "",
+    "keywords": [],
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4.0",
+        "yiisoft/yii2": "~2.0.45",
+        "yiisoft/yii2-bootstrap5": "~2.0.2",
+        "pantagruel74/multicurtest-currency-manager": "^1.0.0",
+        "pantagruel74/multicurtest-bank-management-service": "^1.0.0",
+        "pantagruel74/multicurtest-private-operations-service": "^1.2.1",
+        "pantagruel74/multicurtest-account-administrations-service": "^1.0.1"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.2.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "phpunit/phpunit": "~9.5.0",
+        "pantagruel74/yii2-test-app": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer" : true
+        },
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "scripts": {
+        "test:unit": "phpunit test-unit",
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Pantagruel74\\MulticurtestFinalScenarioTest\\": "test-unit/",
+            "app\\": "app/",
+            "components\\": "components/"
+        }
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mnemesong/multicurtest-bank-management-service.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mnemesong/multicurtest-private-operations-service.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mnemesong/multicurtest-currency-manager.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mnemesong/multicurtest-account-administrations-service.git"
+        }
+    ]
+}
