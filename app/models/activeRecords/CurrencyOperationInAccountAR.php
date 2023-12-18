@@ -31,11 +31,17 @@ class CurrencyOperationInAccountAR extends ActiveRecord implements
     const OP_TYPE_CUSTOMER_CONV_WRITE_IN = "CCWI";
     const OP_TYPE_BANK_CONV_OPERATION = "BCO";
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return "{{%currency_operations_in_account}}";
     }
 
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -47,11 +53,17 @@ class CurrencyOperationInAccountAR extends ActiveRecord implements
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->uuid;
     }
 
+    /**
+     * @return AmountInCurrencyValInterface
+     */
     public function getAmount(): AmountInCurrencyValInterface
     {
         return new AmountInCurrencyVal(
@@ -61,16 +73,25 @@ class CurrencyOperationInAccountAR extends ActiveRecord implements
         );
     }
 
+    /**
+     * @return bool
+     */
     public function isConfirmed(): bool
     {
         return $this->confirmed == true;
     }
 
+    /**
+     * @return bool
+     */
     public function isDeclined(): bool
     {
         return $this->declined == true;
     }
 
+    /**
+     * @return $this
+     */
     public function asDeclined(): self
     {
         Assert::false($this->confirmed === true,

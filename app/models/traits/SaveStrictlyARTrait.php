@@ -7,6 +7,9 @@ use yii\db\ActiveRecord;
 
 trait SaveStrictlyARTrait
 {
+    /**
+     * @return void
+     */
     public function saveStrictly(): void
     {
         /* @var ActiveRecord $this */

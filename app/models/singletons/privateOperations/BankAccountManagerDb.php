@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\privateOperations;
+namespace app\models\singletons\privateOperations;
 
 use app\models\activeRecords\BankAccountAR;
 use Pantagruel74\MulticurtestPrivateOperationsService\managers\BankAccountManagerInterface;
@@ -10,12 +10,19 @@ use yii\db\ActiveQuery;
 
 class BankAccountManagerDb implements BankAccountManagerInterface
 {
+    /**
+     * @return ActiveQuery
+     */
     private function query(): ActiveQuery
     {
         return BankAccountAR::find()
             ->joinWith('currenciesInAccount');
     }
 
+    /**
+     * @param string $id
+     * @return BankAccountRecInterface
+     */
     public function getAccount(string $id): BankAccountRecInterface
     {
         $rec = $this->query()

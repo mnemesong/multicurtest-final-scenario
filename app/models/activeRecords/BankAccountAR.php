@@ -24,11 +24,17 @@ class BankAccountAR extends ActiveRecord implements
 
     public array $curIds = [];
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return "{{%bank_accounts}}";
     }
 
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -37,6 +43,9 @@ class BankAccountAR extends ActiveRecord implements
         ];
     }
 
+    /**
+     * @return void
+     */
     public function afterFind()
     {
         parent::init();
@@ -46,6 +55,10 @@ class BankAccountAR extends ActiveRecord implements
         );
     }
 
+    /**
+     * @param string[] $curIds
+     * @return $this
+     */
     public function removeCurrencyIds(array $curIds): self
     {
         Assert::allString($curIds,
@@ -58,6 +71,10 @@ class BankAccountAR extends ActiveRecord implements
         return $c;
     }
 
+    /**
+     * @param string $curId
+     * @return $this
+     */
     public function changeMainCurrency(string $curId): self
     {
         Assert::inArray($curId, $this->curIds, "Currency " . $curId
@@ -67,11 +84,18 @@ class BankAccountAR extends ActiveRecord implements
         return $c;
     }
 
+    /**
+     * @return string
+     */
     public function getMainCurId(): string
     {
         return $this->mainCurId;
     }
 
+    /**
+     * @param string[] $curs
+     * @return $this
+     */
     public function addCurrencies(array $curs): self
     {
         $c = clone $this;
@@ -91,32 +115,53 @@ class BankAccountAR extends ActiveRecord implements
         return $this->curIds;
     }
 
+    /**
+     * @param string $cur
+     * @return $this
+     */
     public function withMainCurrency(string $cur): self
     {
         return $this->changeMainCurrency($cur);
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->uuid;
     }
 
+    /**
+     * @return string[]
+     */
     public function getCurrencyIds(): array
     {
         return $this->getCurrencies();
     }
 
+    /**
+     * @param string[] $curIds
+     * @return $this
+     */
     public function addCurrencyIds(array $curIds): self
     {
         return $this->addCurrencies($curIds);
     }
 
+    /**
+     * @return ActiveQuery
+     */
     public function getSummariesInAccount(): ActiveQuery
     {
         return $this->hasMany(CurrencySummaryInAccountAR::class,
             ["accountUuid" => "uuid"]);
     }
 
+    /**
+     * @param string $curId
+     * @return CurrencySummaryInAccountAR|null
+     */
     public function getLastSummary(string $curId): ?CurrencySummaryInAccountAR
     {
         $thisCurSummaries = array_values(array_filter(
@@ -134,22 +179,38 @@ class BankAccountAR extends ActiveRecord implements
         );
     }
 
+    /**
+     * @param string $curId
+     * @return int|null
+     */
     public function getLastSummaryTimestamp(string $curId): ?int
     {
         $lastSummary = $this->getLastSummary($curId);
         return empty($lastSummary) ? null : $lastSummary->timestamp;
     }
 
+    /**
+     * @return string
+     */
     public function getMainCurrency(): string
     {
         return $this->getMainCurId();
     }
 
+    /**
+     * @return ActiveQueryInterface
+     */
     public function getCurrenciesInAccount(): ActiveQueryInterface
     {
         return $this->hasMany(CurrencyInBankAccountAR::class, ["bankAccUuid" => "uuid"]);
     }
 
+    /**
+     * @param bool $transactional
+     * @return void
+     * @throws \Throwable
+     * @throws \yii\db\Exception
+     */
     public function saveWithCurrency(bool $transactional): void
     {
         $saveFunc = function() {

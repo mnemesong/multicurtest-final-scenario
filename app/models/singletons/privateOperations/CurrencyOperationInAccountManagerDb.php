@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\privateOperations;
+namespace app\models\singletons\privateOperations;
 
 use app\models\activeRecords\CurrencyOperationInAccountAR;
 use Pantagruel74\MulticurtestCurrencyManager\value\AmountInCurrencyVal;
@@ -9,7 +9,7 @@ use Pantagruel74\MulticurtestPrivateOperationsService\records\CurrencyOperationI
 use Pantagruel74\MulticurtestPrivateOperationsService\values\AmountInCurrencyValInterface;
 use Ramsey\Uuid\Uuid;
 use Webmozart\Assert\Assert;
-use yii\db\ActiveQuery;use yii\db\ActiveQueryInterface;
+use yii\db\ActiveQueryInterface;
 
 class CurrencyOperationInAccountManagerDb implements
     CurrencyOperationManagerInterface

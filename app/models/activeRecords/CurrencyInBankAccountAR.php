@@ -13,11 +13,17 @@ class CurrencyInBankAccountAR extends ActiveRecord
 {
     use SaveStrictlyARTrait;
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return "{{%currency_in_bank_account}}";
     }
 
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [

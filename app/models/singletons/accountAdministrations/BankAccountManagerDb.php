@@ -1,9 +1,8 @@
 <?php
 
-namespace app\models\accountAdministrations;
+namespace app\models\singletons\accountAdministrations;
 
 use app\models\activeRecords\BankAccountAR;
-use app\models\activeRecords\CurrencyInBankAccountAR;
 use Pantagruel74\MulticurtestAccountAdministrationsService\managers\BankAccountMangerInterface;
 use Pantagruel74\MulticurtestAccountAdministrationsService\records\BankAccountRecInterface;
 use Ramsey\Uuid\Uuid;
@@ -12,6 +11,9 @@ use yii\db\ActiveQuery;
 
 class BankAccountManagerDb implements BankAccountMangerInterface
 {
+    /**
+     * @return ActiveQuery
+     */
     private function query(): ActiveQuery
     {
         return BankAccountAR::find()
@@ -19,6 +21,10 @@ class BankAccountManagerDb implements BankAccountMangerInterface
             ->joinWith('summariesInAccount');
     }
 
+    /**
+     * @param string $mainCurrency
+     * @return BankAccountRecInterface
+     */
     public function createAccount(string $mainCurrency): BankAccountRecInterface
     {
         Assert::true(
@@ -32,6 +38,10 @@ class BankAccountManagerDb implements BankAccountMangerInterface
         ]);
     }
 
+    /**
+     * @param string $accId
+     * @return BankAccountRecInterface
+     */
     public function getAccount(string $accId): BankAccountRecInterface
     {
         $rec = $this->query()

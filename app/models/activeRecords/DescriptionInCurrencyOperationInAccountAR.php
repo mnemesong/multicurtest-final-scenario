@@ -13,11 +13,17 @@ class DescriptionInCurrencyOperationInAccountAR extends ActiveRecord
 {
     use SaveStrictlyARTrait;
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return '{{%descriptions_in_cur_operations_in_acc}}';
     }
 
+    /**
+     * @return array[]
+     */
     public function rules(): array
     {
         return [

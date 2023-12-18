@@ -21,11 +21,17 @@ class CurrencySummaryInAccountAR extends ActiveRecord implements
 {
     use SaveStrictlyARTrait;
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return "{{%currency_summaries_in_account}}";
     }
 
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -36,16 +42,25 @@ class CurrencySummaryInAccountAR extends ActiveRecord implements
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->uuid;
     }
 
+    /**
+     * @return string
+     */
     public function getCurId(): string
     {
         return $this->curId;
     }
 
+    /**
+     * @return AmountInCurrencyValInterface
+     */
     public function getAmount(): AmountInCurrencyValInterface
     {
         return new AmountInCurrencyVal(
@@ -55,6 +70,9 @@ class CurrencySummaryInAccountAR extends ActiveRecord implements
         );
     }
 
+    /**
+     * @return int
+     */
     public function getTimestamp(): int
     {
         return $this->timestamp;

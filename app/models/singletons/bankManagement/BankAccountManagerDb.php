@@ -1,10 +1,9 @@
 <?php
 
-namespace app\models\bankManagement;
+namespace app\models\singletons\bankManagement;
 
 use app\models\activeRecords\BankAccountAR;
 use Pantagruel74\MulticurtestBankManagementService\managers\BankAccountMangerInterface;
-use Pantagruel74\MulticurtestBankManagementService\records\BankAccountRecInterface;
 use Webmozart\Assert\Assert;
 use yii\db\ActiveQuery;
 

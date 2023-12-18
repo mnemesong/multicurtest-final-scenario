@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\currency;
+namespace app\models\singletons\currency;
 
 use app\models\activeRecords\CurrencyDefAR;
 use Pantagruel74\MulticurtestCurrencyManager\managers\CurrencyDefManagerInterface;
@@ -9,6 +9,10 @@ use Webmozart\Assert\Assert;
 
 class CurrencyDefManagerDb implements CurrencyDefManagerInterface
 {
+    /**
+     * @param string $curId
+     * @return CurrencyDefRecInterface
+     */
     public function getCurrency(string $curId): CurrencyDefRecInterface
     {
         $rec = CurrencyDefAR::find()
@@ -19,6 +23,9 @@ class CurrencyDefManagerDb implements CurrencyDefManagerInterface
         return $rec;
     }
 
+    /**
+     * @return CurrencyDefRecInterface[]
+     */
     public function getAllAvailable(): array
     {
         return CurrencyDefAR::find()

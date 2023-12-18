@@ -27,6 +27,10 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         return $config;
     }
 
+    /**
+     * Main test scenario!
+     * @return void
+     */
     protected function testScenario(): void
     {
         $this->clearDb();
@@ -86,6 +90,9 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         //1000 + (40 * 100 = 4000) + (106.66 * 120 = 12799.2) = 17799.2
     }
 
+    /**
+     * @return void
+     */
     private function clearDb(): void
     {
         echo "\nОчистка БД";
@@ -98,6 +105,9 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         DescriptionInCurrencyOperationInAccountAR::deleteAll();
     }
 
+    /**
+     * @return void
+     */
     private function bankInit(): void
     {
         \Yii::$app->bankManagementService
@@ -116,6 +126,10 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         $this->bankAssertListOfExistingCurrencies(["RUB", "EUR", "USD"]);
     }
 
+    /**
+     * @param string $curId
+     * @return string
+     */
     private function customerCreatesAccount(string $curId): string
     {
         \Yii::$app->accountAdministrationsService
@@ -127,6 +141,11 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         return $accId;
     }
 
+    /**
+     * @param string $accId
+     * @param string $curId
+     * @return void
+     */
     private function customerAssertAccountMainCurrency(
         string $accId,
         string $curId
@@ -138,6 +157,11 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         $this->assertEquals($curId, $mainCurrency);
     }
 
+    /**
+     * @param string $accId
+     * @param array $curs
+     * @return void
+     */
     private function customerAddsCurrenciesToAccount(
         string $accId,
         array $curs
@@ -148,6 +172,11 @@ class MulticurrencyAccountTest extends AbstractBaseTest
             . implode(", ", $curs);
     }
 
+    /**
+     * @param string $accId
+     * @param array $expectCurs
+     * @return void
+     */
     private function customerAssertsListOfCurrencies(
         string $accId,
         array $expectCurs
@@ -160,6 +189,12 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         $this->assertEquals($expectCurs, $listOfCurs);
     }
 
+    /**
+     * @param string $accId
+     * @param float $val
+     * @param string $currency
+     * @return void
+     */
     private function customerReplenishment(
         string $accId,
         float $val,
@@ -172,6 +207,12 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         echo "\nКлиент пополнил баланс на " . $val . " " . $currency;
     }
 
+    /**
+     * @param string $accId
+     * @param float $val
+     * @param string $currency
+     * @return void
+     */
     private function customerCashing(
         string $accId,
         float $val,
@@ -184,6 +225,12 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         echo "\nКлиент обналичил " . $val . " " . $currency;
     }
 
+    /**
+     * @param string $accId
+     * @param float $expectVal
+     * @param string $curId
+     * @return void
+     */
     private function customerAssertCurrencyBalance(
         string $accId,
         float $expectVal,
@@ -198,6 +245,12 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         $this->assertEquals($curId, $amount->getCurId());
     }
 
+    /**
+     * @param string $accId
+     * @param float $expectVal
+     * @param string $curId
+     * @return void
+     */
     private function customerAssertTotalBalance(
         string $accId,
         float $expectVal,
@@ -212,6 +265,11 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         $this->assertEquals($curId, $amount->getCurId());
     }
 
+    /**
+     * @param string $accId
+     * @param string $curId
+     * @return void
+     */
     private function customerChangeMainCurrency(
         string $accId,
         string $curId
@@ -221,6 +279,13 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         echo "Клиент меняет основную валюту аккаунта на " . $curId;
     }
 
+    /**
+     * @param string $accId
+     * @param string $fromCur
+     * @param float $val
+     * @param string $toCur
+     * @return void
+     */
     private function customerConverts(
         string $accId,
         string $fromCur,
@@ -236,6 +301,12 @@ class MulticurrencyAccountTest extends AbstractBaseTest
             . $toCur . ".";
     }
 
+    /**
+     * @param string $from
+     * @param string $to
+     * @param float $ratio
+     * @return void
+     */
     private function bankSetsCurrencyRatio(
         string $from,
         string $to,
@@ -248,6 +319,11 @@ class MulticurrencyAccountTest extends AbstractBaseTest
             . $ratio;
     }
 
+    /**
+     * @param string $switchedOffCur
+     * @param string $defaultCur
+     * @return void
+     */
     private function bankSwitchsOffCurrency(
         string $switchedOffCur,
         string $defaultCur
@@ -258,6 +334,10 @@ class MulticurrencyAccountTest extends AbstractBaseTest
             . ", конвертирует балансы всех клиентов в " . $defaultCur;
     }
 
+    /**
+     * @param array $curs
+     * @return void
+     */
     private function bankAssertListOfExistingCurrencies(array  $curs): void
     {
         echo "\nБанк проверяет что список всех доступных валют равен: "
@@ -268,11 +348,19 @@ class MulticurrencyAccountTest extends AbstractBaseTest
         );
     }
 
+    /**
+     * @param AmountInCurrencyVal $a
+     * @return string
+     */
     private function printAmount(AmountInCurrencyVal $a): string
     {
         return $a->toNumber() . " " . $a->getCurId();
     }
 
+    /**
+     * @param int $s
+     * @return void
+     */
     private function printStepHeader(int $s): void
     {
         echo "\n\n" . $s . ".";

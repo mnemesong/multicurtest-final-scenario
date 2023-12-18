@@ -15,11 +15,17 @@ class CurrencyDefAR extends ActiveRecord implements CurrencyDefRecInterface
 {
     use SaveStrictlyARTrait;
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return "{{%currency_defs}}";
     }
 
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -29,21 +35,33 @@ class CurrencyDefAR extends ActiveRecord implements CurrencyDefRecInterface
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getCurId(): string
     {
         return $this->curId;
     }
 
+    /**
+     * @return int
+     */
     public function getDotPosition(): int
     {
         return $this->dotPosition;
     }
 
+    /**
+     * @return bool
+     */
     public function isAvailable(): bool
     {
         return $this->available == true;
     }
 
+    /**
+     * @return CurrencyDefRecInterface
+     */
     public function asUnavailable(): CurrencyDefRecInterface
     {
         $c = clone $this;

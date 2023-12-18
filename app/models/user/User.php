@@ -12,6 +12,9 @@ class User extends BaseObject implements \yii\web\IdentityInterface
     public $authKey;
     public $accessToken;
 
+    /**
+     * @var \string[][]
+     */
     private static $users = [
         '100' => [
             'id' => '100',

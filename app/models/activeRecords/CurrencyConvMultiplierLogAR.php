@@ -18,11 +18,17 @@ class CurrencyConvMultiplierLogAR extends ActiveRecord implements
 {
     use SaveStrictlyARTrait;
 
+    /**
+     * @return string
+     */
     public static function tableName(): string
     {
         return "{{%currency_conv_multipliers}}";
     }
 
+    /**
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -34,21 +40,33 @@ class CurrencyConvMultiplierLogAR extends ActiveRecord implements
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getFromCurId(): string
     {
         return $this->fromCurId;
     }
 
+    /**
+     * @return string
+     */
     public function getToCurId(): string
     {
         return $this->toCurId;
     }
 
+    /**
+     * @return int
+     */
     public function getTimestamp(): int
     {
         return $this->timestamp;
     }
 
+    /**
+     * @return float
+     */
     public function getMultiplier(): float
     {
         return $this->multiplier;

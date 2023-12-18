@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\privateOperations;
+namespace app\models\singletons\privateOperations;
 
 use app\models\activeRecords\CurrencySummaryInAccountAR;
 use Pantagruel74\MulticurtestPrivateOperationsService\managers\CurrencySummaryManagerInterface;
@@ -9,11 +9,19 @@ use yii\db\ActiveQuery;
 
 class CurrencySummaryManagerDb implements CurrencySummaryManagerInterface
 {
+    /**
+     * @return ActiveQuery
+     */
     private function getQuery(): ActiveQuery
     {
         return CurrencySummaryInAccountAR::find();
     }
 
+    /**
+     * @param string $accId
+     * @param string $curId
+     * @return CurrencySummaryInAccountRecInterface|null
+     */
     public function getLastSummaryForAccount(
         string $accId,
         string $curId

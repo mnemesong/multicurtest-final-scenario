@@ -1,8 +1,7 @@
 <?php
 
-namespace app\models\bankManagement;
+namespace app\models\singletons\bankManagement;
 
-use app\models\activeRecords\BankAccountAR;
 use app\models\activeRecords\CurrencyOperationInAccountAR;
 use app\models\activeRecords\DescriptionInCurrencyOperationInAccountAR;
 use Pantagruel74\MulticurtestBankManagementService\managers\BankAccountBalanceManagerInterface;
@@ -13,7 +12,11 @@ use Webmozart\Assert\Assert;
 
 class BankAccountBalanceManagerDb implements BankAccountBalanceManagerInterface
 {
-
+    /**
+     * @param string $accId
+     * @param string $curId
+     * @return AmountInCurrencyValInterface
+     */
     public function calcFrozenBalanceInCurrencyInAccount(
         string $accId,
         string $curId
@@ -25,6 +28,14 @@ class BankAccountBalanceManagerDb implements BankAccountBalanceManagerInterface
         return $rec;
     }
 
+    /**
+     * @param string $accountId
+     * @param AmountInCurrencyValInterface $amountInCurrencyVal
+     * @param string $description
+     * @return void
+     * @throws \Throwable
+     * @throws \yii\db\Exception
+     */
     public function addAndConfirmBalanceCorrectionOperation(
         string $accountId,
         AmountInCurrencyValInterface $amountInCurrencyVal,
@@ -55,6 +66,14 @@ class BankAccountBalanceManagerDb implements BankAccountBalanceManagerInterface
         }
     }
 
+    /**
+     * @param string $accId
+     * @param string $curId
+     * @param int|null $afterTimestamp
+     * @return void
+     * @throws \Throwable
+     * @throws \yii\db\Exception
+     */
     public function declineAllOperationsInProcessAfter(
         string $accId,
         string $curId,
