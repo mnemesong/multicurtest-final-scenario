@@ -11,7 +11,7 @@ use yii\db\ActiveRecord;
  * @property int $dotPosition
  * @property bool $available
  */
-class CurrencyDefRecordAR extends ActiveRecord implements CurrencyDefRecInterface
+class CurrencyDefAR extends ActiveRecord implements CurrencyDefRecInterface
 {
     use SaveStrictlyARTrait;
 

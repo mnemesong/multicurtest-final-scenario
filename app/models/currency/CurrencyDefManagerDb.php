@@ -2,7 +2,7 @@
 
 namespace app\models\currency;
 
-use app\models\activeRecords\CurrencyDefRecordAR;
+use app\models\activeRecords\CurrencyDefAR;
 use Pantagruel74\MulticurtestCurrencyManager\managers\CurrencyDefManagerInterface;
 use Pantagruel74\MulticurtestCurrencyManager\records\CurrencyDefRecInterface;
 use Webmozart\Assert\Assert;
@@ -11,17 +11,17 @@ class CurrencyDefManagerDb implements CurrencyDefManagerInterface
 {
     public function getCurrency(string $curId): CurrencyDefRecInterface
     {
-        $rec = CurrencyDefRecordAR::find()
+        $rec = CurrencyDefAR::find()
             ->andWhere(["curId" => $curId])
             ->one();
         Assert::notEmpty($rec, "Record " . $curId . " had been not found");
-        /* @var CurrencyDefRecordAR $rec */
+        /* @var CurrencyDefAR $rec */
         return $rec;
     }
 
     public function getAllAvailable(): array
     {
-        return CurrencyDefRecordAR::find()
+        return CurrencyDefAR::find()
             ->andWhere(["available" => 1])
             ->all();
     }
@@ -30,7 +30,7 @@ class CurrencyDefManagerDb implements CurrencyDefManagerInterface
         string $curId,
         int $dotPosition
     ): CurrencyDefRecInterface {
-        return new CurrencyDefRecordAR([
+        return new CurrencyDefAR([
             "curId" => $curId,
             "dotPosition" => $dotPosition,
             "available" => 1,
@@ -39,8 +39,8 @@ class CurrencyDefManagerDb implements CurrencyDefManagerInterface
 
     public function save(CurrencyDefRecInterface $cur): void
     {
-        Assert::isAOf($cur, CurrencyDefRecordAR::class);
-        /* @var CurrencyDefRecordAR $cur */
+        Assert::isAOf($cur, CurrencyDefAR::class);
+        /* @var CurrencyDefAR $cur */
         $t = \Yii::$app->db->beginTransaction();
         try {
             $cur->saveStrictly();

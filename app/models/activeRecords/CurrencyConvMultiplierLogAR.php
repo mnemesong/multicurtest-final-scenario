@@ -7,6 +7,7 @@ use Pantagruel74\MulticurtestCurrencyManager\records\CurrencyConvMultiplierRecIn
 use yii\db\ActiveRecord;
 
 /**
+ * @property string $uuid
  * @property string $fromCurId
  * @property string $toCurId
  * @property int $timestamp
@@ -25,7 +26,8 @@ class CurrencyConvMultiplierLogAR extends ActiveRecord implements
     public function rules(): array
     {
         return [
-            [["fromCurId", "toCurId", "timestamp", "multiplier"], "required"],
+            [["uuid", "fromCurId", "toCurId", "timestamp", "multiplier"],
+                "required"],
             [["fromCurId", "toCurId"], "string", "length" => [2, 8]],
             ["timestamp", "number", "onlyInteger", "min" => 0],
             ["multiplier", "number"]

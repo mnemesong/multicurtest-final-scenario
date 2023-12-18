@@ -5,6 +5,7 @@ namespace app\models\currency;
 use app\models\activeRecords\CurrencyConvMultiplierLogAR;
 use Pantagruel74\MulticurtestCurrencyManager\managers\CurrencyConvMultiplierMangerInterface;
 use Pantagruel74\MulticurtestCurrencyManager\records\CurrencyConvMultiplierRecInterface;
+use Ramsey\Uuid\Uuid;
 use Webmozart\Assert\Assert;
 
 class CurrencyConvMultiplierLogManagerDb implements
@@ -24,6 +25,7 @@ class CurrencyConvMultiplierLogManagerDb implements
         float $multi
     ): CurrencyConvMultiplierRecInterface {
         return new CurrencyConvMultiplierLogAR([
+            "uuid" => Uuid::uuid4()->toString(),
             "fromCurId" => $curFrom,
             "toCurId" => $curTo,
             "timestamp" => (new \DateTime("now"))->getTimestamp(),
