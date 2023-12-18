@@ -31,7 +31,7 @@ class CurrencySummaryInAccountAR extends ActiveRecord implements
         return [
             [['uuid', 'curId', 'accountUuid', 'timestamp'], 'required'],
             [['timestamp', 'amountDotPosition'],
-                'number', 'onlyInteger', 'min' => 0],
+                'number', "integerOnly" => true, 'min' => 0],
             ['amountDecades', 'number', 'onlyInteger'],
         ];
     }

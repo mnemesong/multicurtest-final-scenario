@@ -41,8 +41,9 @@ class CurrencyOperationInAccountAR extends ActiveRecord implements
         return [
             [['uuid', 'curId', 'accId', 'opType'], 'required'],
             ['opType', 'string', 'length' => [2, 8]],
-            [['amountDotPosition', 'timestamp'], 'number', 'onlyInteger', 'min' => 0],
-            ['amountDecades', 'number', 'onlyInteger']
+            [['amountDotPosition', 'timestamp'],
+                'number', "integerOnly" => true, 'min' => 0],
+            ['amountDecades', 'number', 'integerOnly' => true]
         ];
     }
 

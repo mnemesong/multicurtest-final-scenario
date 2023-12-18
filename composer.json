@@ -9,8 +9,8 @@
         "php": ">=7.4.0",
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
-        "pantagruel74/multicurtest-currency-manager": "^1.1.0",
-        "pantagruel74/multicurtest-bank-management-service": "^1.0.1",
+        "pantagruel74/multicurtest-currency-manager": "^1.2.0",
+        "pantagruel74/multicurtest-bank-management-service": "^1.0.3",
         "pantagruel74/multicurtest-private-operations-service": "^1.2.1",
         "pantagruel74/multicurtest-account-administrations-service": "^2.0.0"
     },
@@ -31,7 +31,7 @@
         }
     },
     "scripts": {
-        "test:unit": "phpunit test-unit",
+        "test:scenario": "phpunit test-scenario --verbose",
         "post-install-cmd": [
             "yii\\composer\\Installer::postInstall"
         ],
@@ -42,7 +42,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pantagruel74\\MulticurtestFinalScenarioTest\\": "test-unit/",
+            "Pantagruel74\\MulticurtestFinalScenarioTest\\": "test-scenario/",
             "app\\": "app/"
         }
     },

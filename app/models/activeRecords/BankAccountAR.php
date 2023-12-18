@@ -37,7 +37,7 @@ class BankAccountAR extends ActiveRecord implements
         ];
     }
 
-    public function init()
+    public function afterFind()
     {
         parent::init();
         $this->curIds = array_map(
@@ -75,10 +75,11 @@ class BankAccountAR extends ActiveRecord implements
     public function addCurrencies(array $curs): self
     {
         $c = clone $this;
-        $c->curIds = array_unique(array_merge(
-            $c->curIds,
-            $curs
-        ));
+        foreach ($curs as $cur) {
+            if(!in_array($cur, $c->curIds)) {
+                $c->curIds[] = $cur;
+            }
+        }
         return $c;
     }
 
@@ -158,7 +159,7 @@ class BankAccountAR extends ActiveRecord implements
                 (new CurrencyInBankAccountAR([
                     'curId' => $curId,
                     'bankAccUuid' => $this->uuid,
-                ]))->saveStrictly();
+                ]))->save();
             }
         };
         if($transactional) {

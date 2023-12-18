@@ -29,7 +29,7 @@ class CurrencyConvMultiplierLogAR extends ActiveRecord implements
             [["uuid", "fromCurId", "toCurId", "timestamp", "multiplier"],
                 "required"],
             [["fromCurId", "toCurId"], "string", "length" => [2, 8]],
-            ["timestamp", "number", "onlyInteger", "min" => 0],
+            ["timestamp", "number", "integerOnly" => true, "min" => 0],
             ["multiplier", "number"]
         ];
     }

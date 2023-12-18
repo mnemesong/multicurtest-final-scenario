@@ -149,6 +149,8 @@ class CurrencyOperationInAccountManagerDb implements
     /**
      * @param string[] $operations
      * @return void
+     * @throws \Throwable
+     * @throws \yii\db\Exception
      */
     public function saveNewOperations(array $operations): void
     {
@@ -162,6 +164,7 @@ class CurrencyOperationInAccountManagerDb implements
             $t->commit();
         } catch (\Throwable $e) {
             $t->rollBack();
+            throw $e;
         }
     }
 

@@ -28,13 +28,14 @@ class BankAccountManagerDb implements BankAccountMangerInterface
         return new BankAccountAR([
             'uuid' => Uuid::uuid4()->toString(),
             'mainCurId' => $mainCurrency,
+            "curIds" => [$mainCurrency],
         ]);
     }
 
     public function getAccount(string $accId): BankAccountRecInterface
     {
         $rec = $this->query()
-            ->andWhere(['uuid' => $accId])
+            ->andWhere([BankAccountAR::tableName().'.uuid' => $accId])
             ->one();
         Assert::notEmpty($rec, "Account " . $accId . " had been not found");
         /* @var BankAccountAR $rec */
