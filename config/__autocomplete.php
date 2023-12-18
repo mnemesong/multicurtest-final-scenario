@@ -21,7 +21,10 @@ class Yii {
 /**
  * @property yii\rbac\DbManager $authManager 
  * @property \yii\web\User|__WebUser $user
- * 
+ * @property \Pantagruel74\MulticurtestAccountAdministrationsService\AccountAdministrationsService $accountAdministrationsService
+ * @property \Pantagruel74\MulticurtestPrivateOperationsService\PrivateOperationsService $privateOperationsService
+ * @property \Pantagruel74\MulticurtestBankManagementService\BankManagementService $bankManagementService
+ * @property \Pantagruel74\MulticurtestCurrencyManager\CurrencyManager $currencyManager
  */
 class __Application {
 }

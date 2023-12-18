@@ -3,13 +3,6 @@ $ds = DIRECTORY_SEPARATOR;
 return array_merge(
     require_once __DIR__ . $ds . 'base.php',
     [
-        'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@app/views' => '@app/app/views'
-                ]
-            ]
-        ],
         'request' => [
             'baseUrl' => '',
             'cookieValidationKey' => '00i-Ji17czC6gOrzQX3bxFOcoi-G0ays',
@@ -24,9 +17,6 @@ return array_merge(
             'identityClass' => \app\models\user\User::class,
             'enableAutoLogin' => true,
         ],
-        'errorHandler' => [
-            'errorAction' => '/site/error',
-        ],
         'urlManager' => [
             'baseUrl' => '/',
             'enablePrettyUrl' => true,
@@ -34,8 +24,5 @@ return array_merge(
             'rules' => [
             ],
         ],
-        'startPageStrategy' => [
-            'class' => \components\startPageStrategy\StartPageStrategy::class,
-        ]
     ]
 );

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1efa0e6a7cd8b2a3a449c108e1c371c",
+    "content-hash": "6d4fed2396a0e6278fb1c653fa0baba8",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -283,16 +283,16 @@
         },
         {
             "name": "pantagruel74/multicurtest-account-administrations-service",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnemesong/multicurtest-account-administrations-service.git",
-                "reference": "ce9eddadc5c40ca15a76a8375ca6f4f7eba8b2bc"
+                "reference": "e618d50c21cb145876c7b462c1ce9f68562bc34c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnemesong/multicurtest-account-administrations-service/zipball/ce9eddadc5c40ca15a76a8375ca6f4f7eba8b2bc",
-                "reference": "ce9eddadc5c40ca15a76a8375ca6f4f7eba8b2bc",
+                "url": "https://api.github.com/repos/mnemesong/multicurtest-account-administrations-service/zipball/e618d50c21cb145876c7b462c1ce9f68562bc34c",
+                "reference": "e618d50c21cb145876c7b462c1ce9f68562bc34c",
                 "shasum": ""
             },
             "require": {
@@ -326,23 +326,23 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/mnemesong/multicurtest-account-administrations-service/tree/1.0.1",
+                "source": "https://github.com/mnemesong/multicurtest-account-administrations-service/tree/2.0.0",
                 "issues": "https://github.com/mnemesong/multicurtest-account-administrations-service/issues"
             },
-            "time": "2023-12-15T14:42:59+00:00"
+            "time": "2023-12-17T19:30:38+00:00"
         },
         {
             "name": "pantagruel74/multicurtest-bank-management-service",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnemesong/multicurtest-bank-management-service.git",
-                "reference": "a7560b19895df06ad17cdd09bea758667e422170"
+                "reference": "0b5badde2569e0dbc3aac5e888380ce219a70627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnemesong/multicurtest-bank-management-service/zipball/a7560b19895df06ad17cdd09bea758667e422170",
-                "reference": "a7560b19895df06ad17cdd09bea758667e422170",
+                "url": "https://api.github.com/repos/mnemesong/multicurtest-bank-management-service/zipball/0b5badde2569e0dbc3aac5e888380ce219a70627",
+                "reference": "0b5badde2569e0dbc3aac5e888380ce219a70627",
                 "shasum": ""
             },
             "require": {
@@ -376,26 +376,27 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/mnemesong/multicurtest-bank-management-service/tree/1.0.0",
+                "source": "https://github.com/mnemesong/multicurtest-bank-management-service/tree/1.0.1",
                 "issues": "https://github.com/mnemesong/multicurtest-bank-management-service/issues"
             },
-            "time": "2023-12-17T08:39:59+00:00"
+            "time": "2023-12-17T22:05:27+00:00"
         },
         {
             "name": "pantagruel74/multicurtest-currency-manager",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnemesong/multicurtest-currency-manager.git",
-                "reference": "8c874837cc8a5914fc487e966cf4d966abadc622"
+                "reference": "31a53f065891a0e408d9dae30426eec3223eaa1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnemesong/multicurtest-currency-manager/zipball/8c874837cc8a5914fc487e966cf4d966abadc622",
-                "reference": "8c874837cc8a5914fc487e966cf4d966abadc622",
+                "url": "https://api.github.com/repos/mnemesong/multicurtest-currency-manager/zipball/31a53f065891a0e408d9dae30426eec3223eaa1a",
+                "reference": "31a53f065891a0e408d9dae30426eec3223eaa1a",
                 "shasum": ""
             },
             "require": {
+                "pantagruel74/multicurtest-account-administrations-service": "^2.0.0",
                 "pantagruel74/multicurtest-bank-management-service": "^1.0.0",
                 "pantagruel74/multicurtest-private-operations-service": "^1.2.1",
                 "php": ">=7.4",
@@ -428,10 +429,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/mnemesong/multicurtest-currency-manager/tree/1.0.0",
+                "source": "https://github.com/mnemesong/multicurtest-currency-manager/tree/1.1.0",
                 "issues": "https://github.com/mnemesong/multicurtest-currency-manager/issues"
             },
-            "time": "2023-12-17T15:52:51+00:00"
+            "time": "2023-12-17T21:19:20+00:00"
         },
         {
             "name": "pantagruel74/multicurtest-private-operations-service",
