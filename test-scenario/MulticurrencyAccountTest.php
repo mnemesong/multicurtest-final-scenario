@@ -9,12 +9,8 @@ use app\models\activeRecords\CurrencyInBankAccountAR;
 use app\models\activeRecords\CurrencyOperationInAccountAR;
 use app\models\activeRecords\CurrencySummaryInAccountAR;
 use app\models\activeRecords\DescriptionInCurrencyOperationInAccountAR;
-use Pantagruel74\MulticurtestAccountAdministrationsService\AccountAdministrationsService;
-use Pantagruel74\MulticurtestBankManagementService\BankManagementService;
 use Pantagruel74\MulticurtestBankManagementService\values\CurrencyConversionMultiplierVal;
-use Pantagruel74\MulticurtestCurrencyManager\CurrencyManager;
 use Pantagruel74\MulticurtestCurrencyManager\value\AmountInCurrencyVal;
-use Pantagruel74\MulticurtestPrivateOperationsService\PrivateOperationsService;
 use Pantagruel74\Yii2TestAppTestHelpers\AbstractBaseTest;
 
 class MulticurrencyAccountTest extends AbstractBaseTest
